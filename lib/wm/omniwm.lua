@@ -1,22 +1,18 @@
 -- OmniWM backend: workspace state, focus, and a push watcher.
+local watcher = require("lib.watcher")
+
 local M = {}
 
 M.event = "omniwm_workspace_changed"
 
 local WATCH = "omniwmctl watch active-workspace,windows-changed --reconnect "
     .. "--exec sketchybar --trigger " .. M.event
-local PIDFILE = "/tmp/sketchybar_omniwm_watch.pid"
 
--- Register the event and (re)start the watcher. The watcher outlives config
--- reloads, so kill the previous one (by pid, only if it is still omniwmctl).
+-- Register the event and (re)start the watcher.
 -- --reconnect keeps it alive across WM restarts.
 function M.start()
     sbar.add("event", M.event)
-    os.execute(
-        'pid=$(cat ' .. PIDFILE .. ' 2>/dev/null) && '
-            .. 'ps -p "$pid" -o comm= 2>/dev/null | grep -q omniwmctl && kill "$pid"'
-    )
-    os.execute("(" .. WATCH .. " >/dev/null 2>&1 & echo $! > " .. PIDFILE .. ")")
+    watcher.start("/tmp/sketchybar_omniwm_watch.pid", WATCH, "omniwmctl watch")
 end
 
 -- isCurrent is the workspace on screen; isFocused only tracks the one holding

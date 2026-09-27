@@ -25,10 +25,7 @@ return {
         off = "\u{F05AA}", -- md-wifi_off
     },
     media = {
-        back = "",
-        forward = "",
-        play_pause = "",
-        play = "",
-        pause = "",
+        play = "\u{F040A}", -- md-play
+        pause = "\u{F03E4}", -- md-pause
     },
 }

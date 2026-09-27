@@ -2,15 +2,11 @@
 -- Right-side items render right-to-left, so they are listed outermost first.
 local ui = require("ui")
 local layout = ui.layout
-local swatch = require("items.debug.swatch")
 
 layout("left", {
     { name = "workspaces", items = { "items.left.apple", ui.separator, "items.left.spaces" } },
     { name = "front_app", items = { "items.left.front_app" } },
-})
-
-layout("center", {
-    { name = "swatch.accent", items = { swatch.accent } },
+    { name = "media", items = { "items.left.media" } },
 })
 
 layout("right", {

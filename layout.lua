@@ -14,6 +14,8 @@ layout("center", {
 })
 
 layout("right", {
-    { name = "swatch.critical", items = { swatch.status({ "crit", "info" }) } },
-    { name = "swatch.status", items = { swatch.status({ "ok", "warn", "alert" }) } },
+    { name = "clock", items = { "items.right.calendar" } },
+    { name = "battery", items = { "items.right.battery" } },
+    { name = "volume", items = { "items.right.volume" } },
+    { name = "wifi", items = { "items.right.wifi" } },
 })

@@ -1,8 +1,8 @@
 local M = {}
 
 M.family = {
-    text = "Satoshi Variable",
-    numeric = "Satoshi Variable",
+    text = "Gabarito",
+    numeric = "Gabarito",
     icon = "SpaceMono Nerd Font",
 }
 

@@ -4,8 +4,9 @@ local merge = require("lib.tbl").merge
 
 local M = {}
 
--- A popup entry with a hover highlight. If `action` (a shell command) is
--- given, clicking the row runs it and closes the popup.
+-- A popup entry. If `action` (a shell command) is given, the row highlights on
+-- hover and clicking it runs the command and closes the popup; otherwise it
+-- is a plain info row.
 function M.row(parent, name, props, action)
     local row = sbar.add("item", name, merge({
         position = "popup." .. parent.name,
@@ -18,19 +19,27 @@ function M.row(parent, name, props, action)
         },
     }, props))
 
-    row:subscribe("mouse.entered", function()
-        row:set({ background = { color = tokens.surface.hover } })
-    end)
-    row:subscribe("mouse.exited", function()
-        row:set({ background = { color = tokens.none } })
-    end)
     if action then
+        row:subscribe("mouse.entered", function()
+            row:set({ background = { color = tokens.surface.hover } })
+        end)
+        row:subscribe("mouse.exited", function()
+            row:set({ background = { color = tokens.none } })
+        end)
         row:subscribe("mouse.clicked", function()
             sbar.exec(action)
             M.close(parent)
         end)
     end
     return row
+end
+
+-- A text-only info row, indented to line up with rows that have an icon
+function M.info(parent, name)
+    return M.row(parent, name, {
+        icon = { drawing = false },
+        label = { padding_left = metrics.space.md },
+    })
 end
 
 function M.toggle(parent)

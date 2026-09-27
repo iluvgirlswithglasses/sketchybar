@@ -2,6 +2,9 @@
 return {
     apple = "",
     dot = "●",
+    settings = "\u{F0493}", -- md-cog
+    activity = "\u{F0430}", -- md-pulse
+    lock = "\u{F033E}", -- md-lock
     volume = {
         _100 = "",
         _66 = "",

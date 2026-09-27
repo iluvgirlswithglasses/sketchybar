@@ -4,8 +4,9 @@ local merge = require("lib.tbl").merge
 
 local M = {}
 
--- A clickable popup entry with a hover highlight
-function M.row(parent, name, props)
+-- A popup entry with a hover highlight. If `action` (a shell command) is
+-- given, clicking the row runs it and closes the popup.
+function M.row(parent, name, props, action)
     local row = sbar.add("item", name, merge({
         position = "popup." .. parent.name,
         icon = { padding_left = metrics.space.md },
@@ -23,6 +24,12 @@ function M.row(parent, name, props)
     row:subscribe("mouse.exited", function()
         row:set({ background = { color = tokens.none } })
     end)
+    if action then
+        row:subscribe("mouse.clicked", function()
+            sbar.exec(action)
+            M.close(parent)
+        end)
+    end
     return row
 end
 

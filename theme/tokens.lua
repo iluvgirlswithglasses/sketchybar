@@ -7,7 +7,7 @@ return {
         bar = p.transparent,
         group = alpha(p.base, 0.9),
         item = p.cinder,
-        item_active = p.wine,
+        item_active = p.accent,
         hover = alpha(p.text, 0.08),
         popup = alpha(p.base, 0.9),
     },

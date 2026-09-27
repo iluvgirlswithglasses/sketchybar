@@ -1,10 +1,12 @@
 -- Item order and groups for each side of the bar.
 -- Right-side items render right-to-left, so they are listed outermost first.
-local layout = require("ui.layout")
+local ui = require("ui")
+local layout = ui.layout
 local swatch = require("items.debug.swatch")
 
 layout("left", {
-    { name = "swatch.neutrals", items = { swatch.neutrals } },
+    { name = "workspaces", items = { "items.left.apple", ui.separator, "items.left.spaces" } },
+    { name = "front_app", items = { "items.left.front_app" } },
 })
 
 layout("center", {

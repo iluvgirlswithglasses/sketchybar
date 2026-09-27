@@ -6,7 +6,7 @@ local ui = require("ui")
 local logo = ui.item("apple.logo", {
     icon = { drawing = false },
     label = { drawing = false },
-    padding_left = metrics.space.sm,
+    padding_left = metrics.space.md,
     padding_right = metrics.space.sm,
     background = {
         image = {

@@ -45,7 +45,7 @@ local function render(info)
 
     if info.id ~= current_id then
         current_id = info.id
-        local line = info.artist ~= "" and (info.title .. "  •  " .. info.artist) or info.title
+        local line = info.artist ~= "" and (info.title .. "  " .. icons.dot .. "  " .. info.artist) or info.title
         track:set({ label = { string = line } })
     end
 end

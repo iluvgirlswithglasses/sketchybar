@@ -1,6 +1,7 @@
 local tokens = require("theme.tokens")
 local metrics = require("theme.metrics")
 local fonts = require("theme.fonts")
+local icons = require("theme.icons")
 local ui = require("ui")
 
 local function part(name, weight, size, props)
@@ -16,7 +17,7 @@ local date = part("date", "Regular", "md", {
     padding_right = metrics.space.md,
 })
 part("dot", "Regular", "md", {
-    string = "•",
+    string = icons.dot,
     padding_left = metrics.space.xs,
     padding_right = metrics.space.xs,
 })

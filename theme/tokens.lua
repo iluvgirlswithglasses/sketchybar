@@ -5,10 +5,10 @@ local alpha = require("lib.color").alpha
 return {
     surface = {
         bar = p.transparent,
-        group = alpha(p.base, 0.9),
+        group = alpha(p.base, 0.88),
         item_active = p.accent,
         hover = alpha(p.text, 0.08),
-        popup = alpha(p.base, 0.9),
+        popup = alpha(p.base, 0.88),
     },
     border = {
         group = p.hl_high,

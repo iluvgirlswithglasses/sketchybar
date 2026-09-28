@@ -35,16 +35,14 @@ return function(name, glyph)
 
     local function add_track()
         self.track = slider(name .. ".track", metrics.meter.width, {
-            padding_right = metrics.space.sm,
+            padding_right = metrics.space.md,
         })
     end
 
+    -- i don't support left-side meter, do it yourself if you need to
     if scope.position == "right" then
         add_track()
         add_icon()
-    else
-        add_icon()
-        add_track()
     end
     return self
 end

@@ -5,11 +5,12 @@ local M = {}
 
 M.event = "omniwm_workspace_changed"
 
-local WATCH = "omniwmctl watch active-workspace,windows-changed --reconnect "
-    .. "--exec sketchybar --trigger " .. M.event
+local WATCH = [[sh -c 'while :; do ]]
+    .. [[omniwmctl watch active-workspace,windows-changed --reconnect ]]
+    .. [[--exec sketchybar --trigger ]] .. M.event .. [[; ]]
+    .. [[sleep 1; done']]
 
 -- Register the event and (re)start the watcher.
--- --reconnect keeps it alive across WM restarts.
 function M.start()
     sbar.add("event", M.event)
     watcher.start("/tmp/sketchybar_omniwm_watch.pid", WATCH, "omniwmctl watch")
